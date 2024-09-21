@@ -1,7 +1,7 @@
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav" mode="side">
       <mat-nav-list class="nav-list">
-        <a mat-list-item routerLink="/">
+        <a mat-list-item routerLink="home">
           <i class="material-icons">home</i>
           Home
         </a>
@@ -54,6 +54,7 @@
           menu
         </mat-icon>
       </button>
+      <router-outlet></router-outlet>
     </div>
   
   </mat-drawer-container>

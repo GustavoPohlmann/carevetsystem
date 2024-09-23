@@ -1,5 +1,10 @@
 export interface Tutor {
-    id?:any,
-    nome: String,
-    cpf: String
+    idTutor?: any;
+	nome: string;
+	cpf: string;
+	rg: string;
+	dataNascimento: Date;
+	email: string;
+	endereco: string;
+	profissao: string;
 }

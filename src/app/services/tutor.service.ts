@@ -14,4 +14,8 @@ export class TutorService {
   findAll(): Observable<Tutor[]> {
     return this.http.get<Tutor[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/tutor`);
   }
+
+  create(tutor: Tutor): Observable<Tutor> {
+    return this.http.post<Tutor>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/tutor`, tutor);
+  }
 }

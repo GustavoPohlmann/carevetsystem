@@ -33,6 +33,10 @@ import { TutorListComponent } from './components/tutor/tutor-list/tutor-list.com
 import { LoginComponent } from './components/login/login.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-create.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatNativeDateModule } from '@angular/material/core'; 
 
 
 @NgModule({
@@ -42,7 +46,8 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
     HomeComponent,
     HeaderComponent,
     TutorListComponent,
-    LoginComponent
+    LoginComponent,
+    TutorCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -65,11 +70,14 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
     MatIconModule,
     MatListModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
       progressBar: true
-    })
+    }),
+    NgxMaskModule.forRoot(),
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]

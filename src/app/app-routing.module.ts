@@ -6,6 +6,7 @@ import { TutorListComponent } from './components/tutor/tutor-list/tutor-list.com
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-create.component';
+import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'tutors', component: TutorListComponent},
       {path: 'tutors/create', component: TutorCreateComponent},
+      {path: 'tutors/update/:id', component: TutorUpdateComponent},
     ]
   },
 ];

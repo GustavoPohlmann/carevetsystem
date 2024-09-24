@@ -36,7 +36,8 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule } from 'ngx-mask';
-import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component'; 
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     HeaderComponent,
     TutorListComponent,
     LoginComponent,
-    TutorCreateComponent
+    TutorCreateComponent,
+    TutorUpdateComponent
   ],
   imports: [
     BrowserModule,

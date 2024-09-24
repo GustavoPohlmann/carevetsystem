@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { Tutor } from 'src/app/models/tutor';
 import { TutorService } from 'src/app/services/tutor.service';
 
@@ -15,7 +16,7 @@ export class TutorListComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'nome', 'cpf', 'acoes'];
   dataSource = new MatTableDataSource<Tutor>(this.ELEMENT_DATA);
 
-  constructor(private service: TutorService) { }
+  constructor(private service: TutorService, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -26,6 +27,8 @@ export class TutorListComponent implements OnInit {
 
   findAll(){
     this.service.findAll().subscribe(resposta => {
+      resposta.sort((a, b) => a.idTutor - b.idTutor);
+
       this.ELEMENT_DATA = resposta
       this.dataSource = new MatTableDataSource<Tutor>(resposta)
       this.dataSource.paginator = this.paginator;
@@ -35,6 +38,21 @@ export class TutorListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  excluir(tutor : Tutor){
+    this.service.delete(tutor.idTutor).subscribe(respota =>{
+      this.toast.success('Tutor excluído com sucesso', 'Exclusão')
+      this.findAll();
+    }, ex =>{
+      if(ex.error.errors) {
+        ex.error.errors.forEach(element => {
+          this.toast.error(element.message);
+        });
+      } else {
+        this.toast.error(ex.error.message);
+      }
+    })
   }
 
 }

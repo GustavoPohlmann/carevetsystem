@@ -1,0 +1,128 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidth">Cadastro do Animal</h1>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Nome do Animal</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            type="text" 
+            name="nome"
+            [(ngModel)]="animal.nome">
+            <button *ngIf="animal.nome" matSuffix mat-icon-button aria-label="Clear" (click)="animal.nome=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Tutor</mat-label>
+            <mat-select 
+               [(ngModel)]="animal.tutor"
+               name="tutor"
+               required>
+                <mat-option *ngFor="let tu of tutors" [value]="tu">{{ tu.nome }}</mat-option>
+            </mat-select>
+
+            <button *ngIf="animal.tutor" matSuffix mat-icon-button aria-label="Clear" (click)="animal.tutor=null">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field cinquentaWidth paddingRight" appearance="fill">
+          <mat-label>Idade</mat-label>
+          <input 
+          required
+          matInput
+          type="number" 
+          name="idade"
+          [(ngModel)]="animal.idade">
+        </mat-form-field>
+
+        <mat-form-field class="form-field cinquentaWidth paddingLeft" appearance="fill">
+          <mat-label>Peso</mat-label>
+          <input 
+          required
+          matInput
+          type="peso" 
+          name="peso"
+          [(ngModel)]="animal.peso">
+        </mat-form-field>
+
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+          <mat-label>Espécie</mat-label>
+          <input 
+          required
+          matInput 
+          maxlength="100"
+          type="text" 
+          name="especie"
+          [(ngModel)]="animal.especie">
+          <button *ngIf="animal.especie" matSuffix mat-icon-button aria-label="Clear" (click)="animal.especie=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+          <mat-label>Pelagem/Cor</mat-label>
+          <input 
+          required
+          matInput 
+          maxlength="100"
+          type="text" 
+          name="pelagem"
+          [(ngModel)]="animal.pelagem">
+          <button *ngIf="animal.pelagem" matSuffix mat-icon-button aria-label="Clear" (click)="animal.pelagem=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+          <mat-label>Sexo</mat-label>
+          <input 
+          required
+          matInput 
+          maxlength="100"
+          type="text" 
+          name="sexo"
+          [(ngModel)]="animal.sexo">
+          <button *ngIf="animal.sexo" matSuffix mat-icon-button aria-label="Clear" (click)="animal.sexo=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+          <mat-label>Alergias</mat-label>
+          <input 
+          required
+          matInput 
+          maxlength="100"
+          type="text" 
+          name="alergias"
+          [(ngModel)]="animal.alergias">
+          <button *ngIf="animal.alergias" matSuffix mat-icon-button aria-label="Clear" (click)="animal.alergias=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+          <mat-label>Observação</mat-label>
+          <input 
+          required
+          matInput 
+          maxlength="100"
+          type="text" 
+          name="observacao"
+          [(ngModel)]="animal.observacao">
+          <button *ngIf="animal.observacao" matSuffix mat-icon-button aria-label="Clear" (click)="animal.observacao=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button (click)="salvar()" [disabled]="!disableButonAdicionar()" mat-stroked-button color="primary" class="fullWidth mat-elevation-z4 button">Salvar</button>
+
+        <button routerLink="../../" mat-stroked-button color="warn" class="fullWidth mat-elevation-z4 button">Cancelar</button>
+    </form>
+</div>

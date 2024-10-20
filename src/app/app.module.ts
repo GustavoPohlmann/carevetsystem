@@ -37,7 +37,9 @@ import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-crea
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule } from 'ngx-mask';
 import { MatNativeDateModule } from '@angular/material/core';
-import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component'; 
+import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component';
+import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
+import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component'; 
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-upda
     TutorListComponent,
     LoginComponent,
     TutorCreateComponent,
-    TutorUpdateComponent
+    TutorUpdateComponent,
+    AnimalListComponent,
+    AnimalFormComponent
   ],
   imports: [
     BrowserModule,

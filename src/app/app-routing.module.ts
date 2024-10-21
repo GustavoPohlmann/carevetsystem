@@ -9,6 +9,7 @@ import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-crea
 import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component';
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component';
+import { InformacaoPessoalFormComponent } from './components/informacaoPessoal/informacao-pessoal-form/informacao-pessoal-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -22,6 +23,8 @@ const routes: Routes = [
       {path: 'animais', component: AnimalListComponent},
       {path: 'animais/create/:id', component: AnimalFormComponent},
       {path: 'animais/update/:id', component: AnimalFormComponent},
+      
+      {path: 'informacao-pessoal', component: InformacaoPessoalFormComponent},
     ]
   },
 ];

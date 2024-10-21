@@ -13,7 +13,7 @@ export class NavComponent implements OnInit {
   constructor(private router: Router, private loginService: LoginService, private toast: ToastrService) { }
 
   ngOnInit(): void {
-    this.router.navigate(['animais'])
+    this.router.navigate(['home'])
   }
 
   logar(){

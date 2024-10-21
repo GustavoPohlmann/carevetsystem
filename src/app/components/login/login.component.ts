@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Login } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private toast: ToastrService,
-    private service: LoginService,
+    private loginService: LoginService,
+    private usuarioService: UsuarioService,
     private router: Router
   ) { }
 
@@ -30,8 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   logar(){
-    this.service.authenticate(this.log).subscribe(resposta =>{
-      this.service.successfulLogin(resposta.headers.get('Authorization').substring(7));
+    this.loginService.authenticate(this.log).subscribe(resposta =>{     
+      this.loginService.successfulLogin(resposta.headers.get('Authorization').substring(7));
+
+      this.usuarioService.findByLogin(this.log.login).subscribe(respostaUsuario =>{
+        localStorage.setItem('idUsuario', respostaUsuario.idUsuario.toString());
+      })
+
       this.router.navigate(['']);
     }, () => {
       this.toast.error('Usuário e/ou Senha Inválida!', 'Login');

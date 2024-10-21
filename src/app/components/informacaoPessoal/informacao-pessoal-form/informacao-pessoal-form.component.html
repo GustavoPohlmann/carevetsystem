@@ -1,0 +1,146 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidth">Dados do Profisional</h1>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Nome Completo</mat-label>
+            <input 
+            [formControl]="validateNome"
+            required
+            matInput 
+            maxlength="100"
+            type="text" 
+            name="nomeCompleto"
+            [(ngModel)]="informacaoPessoal.nomeCompleto">
+            <button *ngIf="informacaoPessoal.nomeCompleto" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.nomeCompleto=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field fullWidth">
+            <mat-label>Data de Nascimento</mat-label>
+            <input 
+            [formControl]="validateDataNascimento"
+            matInput 
+            [matDatepicker]="picker"
+            name="dataNascimento" 
+            [(ngModel)]="informacaoPessoal.dataNascimento">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Cpf</mat-label>
+            <input 
+            [formControl]="validateCpf"
+            required
+            matInput 
+            type="text" 
+            mask="000.000.000-00"
+            name="cpf"
+            [(ngModel)]="informacaoPessoal.cpf">
+            <button *ngIf="informacaoPessoal.cpf" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.cpf=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Rg</mat-label>
+            <input 
+            [formControl]="validateRg"
+            required
+            matInput 
+            type="text" 
+            name="rg"
+            [(ngModel)]="informacaoPessoal.rg">
+            <button *ngIf="informacaoPessoal.rg" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.rg=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Sexo</mat-label>
+            <input 
+            [formControl]="validateSexo"
+            required
+            matInput 
+            type="sexo" 
+            name="sexo"
+            [(ngModel)]="informacaoPessoal.sexo">
+            <button *ngIf="informacaoPessoal.sexo" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.sexo=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Endereço</mat-label>
+            <input 
+            [formControl]="validateEndereco"
+            required
+            matInput 
+            type="text" 
+            name="endereco"
+            [(ngModel)]="informacaoPessoal.endereco">
+            <button *ngIf="informacaoPessoal.endereco" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.endereco=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input 
+            [formControl]="validateTelefone"
+            required
+            matInput 
+            type="telefone" 
+            name="telefone"
+            [(ngModel)]="informacaoPessoal.telefone">
+            <button *ngIf="informacaoPessoal.telefone" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.telefone=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input 
+            [formControl]="validateEmail"
+            required
+            matInput 
+            type="email" 
+            name="email"
+            [(ngModel)]="informacaoPessoal.email">
+            <button *ngIf="informacaoPessoal.email" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.email=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Número do Crmv</mat-label>
+            <input 
+            [formControl]="validateNumeroCrmv"
+            matInput type="text" 
+            name="numeroCrmv"
+            [(ngModel)]="informacaoPessoal.numeroCrmv">
+            <button *ngIf="informacaoPessoal.numeroCrmv" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.numeroCrmv=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Especialidade</mat-label>
+            <input 
+            matInput type="text" 
+            name="especialidade"
+            [(ngModel)]="informacaoPessoal.especialidade">
+            <button *ngIf="informacaoPessoal.especialidade" matSuffix mat-icon-button aria-label="Clear" (click)="informacaoPessoal.especialidade=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <button (click)="salvar()" mat-stroked-button color="primary" class="fullWidth mat-elevation-z4 button">Salvar</button>
+
+        <button routerLink="/home" mat-stroked-button color="warn" class="fullWidth mat-elevation-z4 button">Cancelar</button>
+
+
+    </form>
+</div>

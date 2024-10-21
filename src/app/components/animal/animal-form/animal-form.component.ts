@@ -60,8 +60,6 @@ export class AnimalFormComponent implements OnInit {
     this.animalService.findById(this.animal.idAnimal).subscribe(resposta =>{
       console.log(resposta);
       this.animal = resposta;
-      console.log(this.animal);
-      
     });
   }
 

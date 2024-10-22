@@ -10,6 +10,7 @@ import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-upda
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component';
 import { InformacaoPessoalFormComponent } from './components/informacaoPessoal/informacao-pessoal-form/informacao-pessoal-form.component';
+import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anotacao-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -25,6 +26,8 @@ const routes: Routes = [
       {path: 'animais/update/:id', component: AnimalFormComponent},
       
       {path: 'informacao-pessoal', component: InformacaoPessoalFormComponent},
+
+      {path: 'anotacao', component: AnotacaoFormComponent},
     ]
   },
 ];

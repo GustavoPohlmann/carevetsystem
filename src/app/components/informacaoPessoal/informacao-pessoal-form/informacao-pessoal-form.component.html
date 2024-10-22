@@ -50,6 +50,7 @@
             [formControl]="validateRg"
             required
             matInput 
+            mask="0.000.000"
             type="text" 
             name="rg"
             [(ngModel)]="informacaoPessoal.rg">
@@ -91,7 +92,8 @@
             <input 
             [formControl]="validateTelefone"
             required
-            matInput 
+            matInput
+            mask="(00) 0 0000-0000" 
             type="telefone" 
             name="telefone"
             [(ngModel)]="informacaoPessoal.telefone">

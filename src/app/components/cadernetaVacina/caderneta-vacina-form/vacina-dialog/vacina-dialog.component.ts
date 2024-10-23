@@ -21,7 +21,7 @@ export class VacinaDialogComponent{
   ) {}
 
   cancelar(): void {
-    this.dialogRef.close();
+    this.dialogRef.close("test");
   }
 
 }

@@ -41,8 +41,12 @@ import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-upda
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component';
 import { InformacaoPessoalFormComponent } from './components/informacaoPessoal/informacao-pessoal-form/informacao-pessoal-form.component';
-import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anotacao-form.component'; 
-
+import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anotacao-form.component';
+import { CadernetaVacinaListComponent } from './components/cadernetaVacina/caderneta-vacina-list/caderneta-vacina-list.component';
+import { CadernetaVacinaFormComponent } from './components/cadernetaVacina/caderneta-vacina-form/caderneta-vacina-form.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { VacinaDialogComponent } from './components/cadernetaVacina/caderneta-vacina-form/vacina-dialog/vacina-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,10 @@ import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anota
     AnimalListComponent,
     AnimalFormComponent,
     InformacaoPessoalFormComponent,
-    AnotacaoFormComponent
+    AnotacaoFormComponent,
+    CadernetaVacinaListComponent,
+    CadernetaVacinaFormComponent,
+    VacinaDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +89,8 @@ import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anota
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

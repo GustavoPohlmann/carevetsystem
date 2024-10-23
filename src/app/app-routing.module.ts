@@ -11,6 +11,8 @@ import { AnimalListComponent } from './components/animal/animal-list/animal-list
 import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component';
 import { InformacaoPessoalFormComponent } from './components/informacaoPessoal/informacao-pessoal-form/informacao-pessoal-form.component';
 import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anotacao-form.component';
+import { CadernetaVacinaListComponent } from './components/cadernetaVacina/caderneta-vacina-list/caderneta-vacina-list.component';
+import { CadernetaVacinaFormComponent } from './components/cadernetaVacina/caderneta-vacina-form/caderneta-vacina-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -28,6 +30,10 @@ const routes: Routes = [
       {path: 'informacao-pessoal', component: InformacaoPessoalFormComponent},
 
       {path: 'anotacao', component: AnotacaoFormComponent},
+
+      {path: 'cadeneta-vacina', component: CadernetaVacinaListComponent},
+      {path: 'cadeneta-vacina/create/:id', component: CadernetaVacinaFormComponent},
+      {path: 'cadeneta-vacina/update/:id', component: CadernetaVacinaFormComponent},
     ]
   },
 ];

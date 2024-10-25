@@ -13,7 +13,7 @@ import { TutorService } from 'src/app/services/tutor.service';
 export class TutorListComponent implements OnInit {
   ELEMENT_DATA: Tutor[] = []
 
-  displayedColumns: string[] = ['codigo', 'nome', 'cpf', 'acoes'];
+  displayedColumns: string[] = ['codigo', 'nome', 'cpf', 'rg', 'dataNascimento', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tutor>(this.ELEMENT_DATA);
 
   constructor(private service: TutorService, private toast: ToastrService) { }

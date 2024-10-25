@@ -29,7 +29,7 @@ export class CadernetaVacinaFormComponent implements OnInit {
 
   ELEMENT_DATA: Vacina[] = []
 
-  displayedColumns: string[] = ['nome', 'acoes'];
+  displayedColumns: string[] = ['nome', 'idadeVacina', 'numeroDose', 'aplicada', 'dataAplicacao', 'acoes'];
   dataSource = new MatTableDataSource<Vacina>(this.ELEMENT_DATA);
 
   constructor(

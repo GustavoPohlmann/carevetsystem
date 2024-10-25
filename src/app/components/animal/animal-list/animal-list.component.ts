@@ -14,7 +14,7 @@ export class AnimalListComponent implements OnInit {
 
   ELEMENT_DATA: Animal[] = []
 
-  displayedColumns: string[] = ['codigo', 'nome', 'tutor', 'acoes'];
+  displayedColumns: string[] = ['codigo', 'nome', 'tutor', 'especie', 'pelagem', 'sexo', 'acoes'];
   dataSource = new MatTableDataSource<Animal>(this.ELEMENT_DATA);
 
   constructor(private service : AnimalService, private toast: ToastrService) { }

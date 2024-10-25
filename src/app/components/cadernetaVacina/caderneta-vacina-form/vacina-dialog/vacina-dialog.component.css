@@ -5,3 +5,15 @@ h1{
 .fullWidth{
     width: 100%;
 }
+
+.cinquentaWidth{
+    width: 46%;
+}
+
+.paddingRight{
+    padding-right: 1rem;
+}
+
+.paddingLeft{
+    padding-left: 1rem;
+}

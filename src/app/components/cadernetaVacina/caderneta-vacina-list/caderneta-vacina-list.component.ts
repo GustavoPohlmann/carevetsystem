@@ -14,7 +14,7 @@ export class CadernetaVacinaListComponent implements OnInit {
 
   ELEMENT_DATA: CadernetaVacina[] = []
 
-  displayedColumns: string[] = ['codigo', 'descricao', 'animal', 'tutor', 'acoes'];
+  displayedColumns: string[] = ['codigo', 'animal', 'tutor', 'acoes'];
   dataSource = new MatTableDataSource<CadernetaVacina>(this.ELEMENT_DATA);
 
   constructor(private service : CadernetaVacinaService, private toast: ToastrService) { }
@@ -25,14 +25,19 @@ export class CadernetaVacinaListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filterPredicate = (data: CadernetaVacina, filter: string) => {
+      return data.animal.tutor.nome.toLowerCase().includes(filter) ||
+             data.idCadernetaVacina.toString().includes(filter) ||
+             data.animal.nome.toLowerCase().includes(filter);
+    };
+    this.dataSource.filter = filterValue;
   }
 
   findAll(){
     this.service.findAll().subscribe(resposta => {
-      //resposta.sort((a, b) => a.animal.nome.localeCompare(b.animal.nome));
 
       this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<CadernetaVacina>(resposta);

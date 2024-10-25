@@ -35,27 +35,49 @@
 
     <h1 class="fullWidth paddingH1Vacina">Histórico de vacinas realizadas</h1>
       <mat-form-field appearance="standard" class="fullWidth" >
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <mat-label>Filtro (Nome - Idade da Vacina - Número da Dose - Data de Aplicação)</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Exemplo fulano" #input>
       </mat-form-field>
   
       <div class="mat-elevation-z8">
           <table mat-table [dataSource]="dataSource">
         
             <ng-container matColumnDef="nome">
-              <th mat-header-cell *matHeaderCellDef> Nome </th>
+              <th mat-header-cell *matHeaderCellDef style="width: 25%;">Nome</th>
               <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
             </ng-container>
-  
-            <ng-container matColumnDef="acoes">
-              <th mat-header-cell *matHeaderCellDef> Ações </th>
+
+            <ng-container matColumnDef="idadeVacina">
+              <th mat-header-cell *matHeaderCellDef style="width: 15%;">Idade da Vacina</th>
+              <td mat-cell *matCellDef="let element"> {{element.idadeVacina}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numeroDose">
+              <th mat-header-cell *matHeaderCellDef style="width: 15%;">Número da Dose</th>
+              <td mat-cell *matCellDef="let element"> {{element.numeroDose}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="aplicada">
+              <th mat-header-cell *matHeaderCellDef style="width: 15%;">Dose Aplicada</th>
               <td mat-cell *matCellDef="let element">
-                <a (click)="openDialog(element.idVacina)" [attr.disabled]="isNew() ? true : null">
-                  <i class="material-icons edit">edit</i>
-                </a>
-                <a (click)="excluir(element)" [attr.disabled]="isNew() ? true : null">
-                  <i class="material-icons delete">delete</i>
-                </a>
+              <mat-checkbox [(ngModel)]="element.aplicada" [disabled]="true"></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataAplicacao">
+              <th mat-header-cell *matHeaderCellDef style="width: 20%;">Data de Aplicação</th>
+              <td mat-cell *matCellDef="let element"> {{element.dataAplicacao | date:'dd/MM/yyyy'}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="acoes">
+              <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Ações </th>
+              <td mat-cell *matCellDef="let element">
+              <a (click)="openDialog(element.idVacina)" [attr.disabled]="isNew() ? true : null">
+                <i class="material-icons edit">edit</i>
+              </a>
+              <a (click)="excluir(element)" [attr.disabled]="isNew() ? true : null">
+                <i class="material-icons delete">delete</i>
+              </a>
               </td>
             </ng-container>
         

@@ -8,4 +8,5 @@ export interface Vacina {
 	numeroDose: number;
 	aplicada: boolean;
 	observacao: string;
+	dataAplicacao: Date;
 }

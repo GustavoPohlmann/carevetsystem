@@ -4,7 +4,7 @@
     <button routerLink="create/novo" class="mat-elevation-z8" mat-stroked-button color="primary">Novo</button>
   
       <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
+        <mat-label>Filtro (Código - Animal - Tutor)</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
   
@@ -12,34 +12,29 @@
           <table mat-table [dataSource]="dataSource">
         
             <ng-container matColumnDef="codigo">
-              <th mat-header-cell *matHeaderCellDef> Código </th>
-              <td mat-cell *matCellDef="let element"> {{element.idCadernetaVacina}} </td>
-            </ng-container>
-        
-            <ng-container matColumnDef="descricao">
-              <th mat-header-cell *matHeaderCellDef> Descrição </th>
-              <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+              <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Código </th>
+              <td mat-cell *matCellDef="let element" style="width: 10%;"> {{element.idCadernetaVacina}} </td>
             </ng-container>
 
             <ng-container matColumnDef="animal">
-              <th mat-header-cell *matHeaderCellDef> Animal </th>
-              <td mat-cell *matCellDef="let element"> {{element.animal.nome}} </td>
+              <th mat-header-cell *matHeaderCellDef style="width: 40%;"> Animal </th>
+              <td mat-cell *matCellDef="let element" style="width: 40%;"> {{element.animal.nome}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="tutor">
+              <th mat-header-cell *matHeaderCellDef style="width: 40%;"> Tutor </th>
+              <td mat-cell *matCellDef="let element" style="width: 40%;"> {{element.animal.tutor.nome}} </td>
             </ng-container>
         
-            <ng-container matColumnDef="tutor">
-              <th mat-header-cell *matHeaderCellDef> Tutor </th>
-              <td mat-cell *matCellDef="let element"> {{element.animal.tutor.nome}} </td>
-            </ng-container>
-  
             <ng-container matColumnDef="acoes">
-              <th mat-header-cell *matHeaderCellDef> Ações </th>
-              <td mat-cell *matCellDef="let element">
-                <a routerLink="update/{{element.id}}">
-                  <i class="material-icons edit">edit</i>
-                </a>
-                <a (click)="excluir(element)">
-                  <i class="material-icons delete">delete</i>
-                </a>
+              <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Ações </th>
+              <td mat-cell *matCellDef="let element" style="width: 10%;"> 
+              <a routerLink="update/{{element.id}}">
+                <i class="material-icons edit">edit</i>
+              </a>
+              <a (click)="excluir(element)">
+                <i class="material-icons delete">delete</i>
+              </a>
               </td>
             </ng-container>
         

@@ -31,4 +31,8 @@ export class VacinaService {
     return this.http.delete<Vacina>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/vacina/${id}`)
   }
 
+  findByIdCadernetaVacina(idCadernetaVacina: any): Observable<Vacina[]> {
+    return this.http.get<Vacina[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/vacina/find-by-id-caderneta-vacina/${idCadernetaVacina}`);
+  }
+
 }

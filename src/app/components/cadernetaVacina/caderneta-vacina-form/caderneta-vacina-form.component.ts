@@ -63,10 +63,7 @@ export class CadernetaVacinaFormComponent implements OnInit {
   }
 
   findAllVacina(){
-    this.vacinaService.findAll().subscribe(resposta => {
-      console.log(resposta);
-      
-
+    this.vacinaService.findByIdCadernetaVacina(this.cadernetaVacina.idCadernetaVacina).subscribe(resposta => {
       this.ELEMENT_DATA = resposta;
       this.dataSource = new MatTableDataSource<Vacina>(resposta);
       this.dataSource.paginator = this.paginator;

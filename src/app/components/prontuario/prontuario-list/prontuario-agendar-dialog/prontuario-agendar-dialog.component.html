@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Agendar Atendimento </h1>
+<div mat-dialog-content>
+    <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Animal</mat-label>
+        <mat-select 
+          [(ngModel)]="prontuario.animal"
+          name="animal"
+          required>
+            <mat-option *ngFor="let animal of animais" [value]="animal">{{ animal.nome }}</mat-option>
+        </mat-select>
+
+        <button *ngIf="prontuario.animal" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.animal=null">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field fullWidth">
+        <mat-label>Data</mat-label>
+        <input 
+        matInput 
+        [matDatepicker]="picker"
+        name="dataCadastro" 
+        [disabled]="false"
+        (change)="atualizarDataAgendamento()"
+        [(ngModel)]="prontuario.dataAgendamento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field fullWidth">
+        <mat-label>Hora</mat-label>
+        <input 
+            matInput 
+            type="time" 
+            name="horaCadastro" 
+            [disabled]="false" 
+            (change)="atualizarDataAgendamento()"
+            [(ngModel)]="dataAgendamentoHora">
+    </mat-form-field>
+
+    <mat-form-field class="form-field fullWidth" appearance="fill">
+        <mat-label>Procedimento</mat-label>
+        <input 
+        required
+        matInput 
+        maxlength="100"
+        type="text" 
+        name="procedimento"
+        [(ngModel)]="prontuario.procedimento">
+        <button *ngIf="prontuario.procedimento" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.procedimento=''">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions class="button-container" style="display: flex; justify-content: center;">
+  <button mat-button (click)="agendar()" mat-stroked-button color="primary" class="mat-elevation-z4 button">Salvar</button>
+  <button mat-button (click)="cancelar()" color="warn" class="mat-elevation-z4 button">Cancelar</button>
+</div>

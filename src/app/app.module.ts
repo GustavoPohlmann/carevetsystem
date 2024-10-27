@@ -47,6 +47,10 @@ import { CadernetaVacinaFormComponent } from './components/cadernetaVacina/cader
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { VacinaDialogComponent } from './components/cadernetaVacina/caderneta-vacina-form/vacina-dialog/vacina-dialog.component';
+import { ProntuarioListComponent } from './components/prontuario/prontuario-list/prontuario-list.component';
+import { ProntuarioFormComponent } from './components/prontuario/prontuario-form/prontuario-form.component';
+import { ProntuarioAgendarDialogComponent } from './components/prontuario/prontuario-list/prontuario-agendar-dialog/prontuario-agendar-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +69,9 @@ import { VacinaDialogComponent } from './components/cadernetaVacina/caderneta-va
     CadernetaVacinaListComponent,
     CadernetaVacinaFormComponent,
     VacinaDialogComponent,
+    ProntuarioListComponent,
+    ProntuarioFormComponent,
+    ProntuarioAgendarDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,193 @@
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <div class="header">
+          <h1 class="fullTitulo">Prontuário de rotina clínica - Tratamento e acompanhamento</h1>
+          <button mat-button routerLink="../../" class="voltar-button">
+            <mat-icon>arrow_back</mat-icon>
+            Voltar
+          </button>
+        </div>
+
+        <mat-form-field class="cinquentaWidth paddingRight" appearance="outline">
+            <mat-label>Nome do Animal</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            type="text"
+            [disabled]="true"
+            name="nomeAnimal"
+            [(ngModel)]="prontuario.animal.nome">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingLeft" appearance="outline">
+            <mat-label>Pelagem/Cor</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="pelagemAnimal"
+            [(ngModel)]="prontuario.animal.pelagem">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingRight" appearance="outline">
+            <mat-label>Espécie</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="especieAnimal"
+            [(ngModel)]="prontuario.animal.especie">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingLeft" appearance="outline">
+            <mat-label>Peso</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="pesoAnimal"
+            [(ngModel)]="prontuario.animal.peso">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingRight" appearance="outline">
+            <mat-label>Idade</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="idadeAnimal"
+            [(ngModel)]="prontuario.animal.idade">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingLeft" appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="sexoAnimal"
+            [(ngModel)]="prontuario.animal.sexo">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Alergias</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="alergiasAnimal"
+            [(ngModel)]="prontuario.animal.alergias">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingRight" appearance="outline">
+            <mat-label>Nome do tutor</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="nomeTutor"
+            [(ngModel)]="prontuario.animal.tutor.nome">
+        </mat-form-field>
+
+        <mat-form-field class="cinquentaWidth paddingLeft" appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input 
+            required
+            matInput 
+            maxlength="100"
+            [disabled]="true"
+            type="text" 
+            name="cpfTutor"
+            [(ngModel)]="prontuario.animal.tutor.cpf">
+        </mat-form-field>
+
+    </form>
+
+    <form>
+        <mat-form-field appearance="fill" class="form-field fullWidth">
+            <mat-label>Data e Hora</mat-label>
+            <input 
+            matInput 
+            [matDatepicker]="picker"
+            name="dataCadastro" 
+            [disabled]="true"
+            [(ngModel)]="prontuario.dataCadastro">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Breve histórico/ Anamnese:</mat-label>
+            <textarea 
+                matInput 
+                maxlength="1000"
+                name="anamnese"
+                rows="5"
+                [(ngModel)]="prontuario.anamnese">
+            </textarea>
+            <button *ngIf="prontuario.anamnese" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.anamnese=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Prescrição e Orientação</mat-label>
+            <textarea 
+                matInput 
+                maxlength="1000"
+                name="prescrisaoOrientacao"
+                rows="5"
+                [(ngModel)]="prontuario.prescrisaoOrientacao">
+            </textarea>
+            <button *ngIf="prontuario.prescrisaoOrientacao" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.prescrisaoOrientacao=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Exames</mat-label>
+            <textarea 
+                matInput 
+                maxlength="1000"
+                name="exames"
+                rows="5"
+                [(ngModel)]="prontuario.exames">
+            </textarea>
+            <button *ngIf="prontuario.exames" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.exames=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="form-field fullWidth" appearance="fill">
+            <mat-label>Procedimentos realizados</mat-label>
+            <textarea 
+                matInput 
+                maxlength="1000"
+                name="procedimentoRealizado"
+                rows="5"
+                [(ngModel)]="prontuario.procedimentoRealizado">
+            </textarea>
+            <button *ngIf="prontuario.procedimentoRealizado" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.procedimentoRealizado=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </form>
+
+    <button (click)="salvar()"  mat-stroked-button color="primary" class="fullWidth mat-elevation-z4 button">Finalizar</button>
+</div>

@@ -13,6 +13,8 @@ import { InformacaoPessoalFormComponent } from './components/informacaoPessoal/i
 import { AnotacaoFormComponent } from './components/anotacao/anotacao-form/anotacao-form.component';
 import { CadernetaVacinaListComponent } from './components/cadernetaVacina/caderneta-vacina-list/caderneta-vacina-list.component';
 import { CadernetaVacinaFormComponent } from './components/cadernetaVacina/caderneta-vacina-form/caderneta-vacina-form.component';
+import { ProntuarioListComponent } from './components/prontuario/prontuario-list/prontuario-list.component';
+import { ProntuarioFormComponent } from './components/prontuario/prontuario-form/prontuario-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -34,6 +36,9 @@ const routes: Routes = [
       {path: 'cadeneta-vacina', component: CadernetaVacinaListComponent},
       {path: 'cadeneta-vacina/create/:id', component: CadernetaVacinaFormComponent},
       {path: 'cadeneta-vacina/update/:id', component: CadernetaVacinaFormComponent},
+
+      {path: 'atender', component: ProntuarioListComponent},
+      {path: 'atender/prontuario/:id', component: ProntuarioFormComponent},
     ]
   },
 ];

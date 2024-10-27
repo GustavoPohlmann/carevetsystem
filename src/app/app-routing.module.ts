@@ -15,6 +15,8 @@ import { CadernetaVacinaListComponent } from './components/cadernetaVacina/cader
 import { CadernetaVacinaFormComponent } from './components/cadernetaVacina/caderneta-vacina-form/caderneta-vacina-form.component';
 import { ProntuarioListComponent } from './components/prontuario/prontuario-list/prontuario-list.component';
 import { ProntuarioFormComponent } from './components/prontuario/prontuario-form/prontuario-form.component';
+import { HistoricoListComponent } from './components/historico/historico-list/historico-list.component';
+import { HistoricoFormComponent } from './components/historico/historico-form/historico-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -39,6 +41,9 @@ const routes: Routes = [
 
       {path: 'atender', component: ProntuarioListComponent},
       {path: 'atender/prontuario/:id', component: ProntuarioFormComponent},
+      
+      {path: 'historico', component: HistoricoListComponent},
+      {path: 'historico/visualizar/:id', component: HistoricoFormComponent},
     ]
   },
 ];

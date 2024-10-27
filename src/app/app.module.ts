@@ -50,6 +50,8 @@ import { VacinaDialogComponent } from './components/cadernetaVacina/caderneta-va
 import { ProntuarioListComponent } from './components/prontuario/prontuario-list/prontuario-list.component';
 import { ProntuarioFormComponent } from './components/prontuario/prontuario-form/prontuario-form.component';
 import { ProntuarioAgendarDialogComponent } from './components/prontuario/prontuario-list/prontuario-agendar-dialog/prontuario-agendar-dialog.component';
+import { HistoricoListComponent } from './components/historico/historico-list/historico-list.component';
+import { HistoricoFormComponent } from './components/historico/historico-form/historico-form.component';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import { ProntuarioAgendarDialogComponent } from './components/prontuario/prontu
     ProntuarioListComponent,
     ProntuarioFormComponent,
     ProntuarioAgendarDialogComponent,
+    HistoricoListComponent,
+    HistoricoFormComponent,
   ],
   imports: [
     BrowserModule,

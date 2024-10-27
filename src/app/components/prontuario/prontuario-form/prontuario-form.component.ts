@@ -48,7 +48,7 @@ export class ProntuarioFormComponent implements OnInit {
   }
 
   salvarNew(): void {
-    this.prontuarioService.create(this.prontuario).subscribe(resposta =>{
+    this.prontuarioService.update(this.prontuario).subscribe(resposta =>{
       this.toast.success('Prontuário salvo com sucesso', 'Cadastro')
       this.router.navigate(['atender'])
     }, ex =>{

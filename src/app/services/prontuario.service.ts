@@ -35,4 +35,7 @@ export class ProntuarioService {
     return this.http.get<Prontuario[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-atendimento-diario`);
   }
 
-}
+  findByIdAnimal(idAnimal : any): Observable<Prontuario[]> {
+    return this.http.get<Prontuario[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-by-id-animal/${idAnimal}`);
+  }
+  }

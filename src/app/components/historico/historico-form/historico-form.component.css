@@ -1,0 +1,60 @@
+.container{
+    width: 60rem;
+    margin: auto;
+    padding: 1rem 1rem 3rem 1rem;
+    border-radius: .6rem;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.fullTitulo{
+    width: 90%;
+}
+
+.widthDefault{
+    width: 47%;
+}
+
+.cinquentaWidth{
+    width: 47%;
+}
+
+.paddingRight{
+    padding-right: 1.5rem;
+}
+
+.paddingLeft{
+    padding-left: 1rem;
+}
+
+.paddingH1Vacina{
+    padding-top: 2rem;
+}
+
+h1{
+    text-align: center;
+}
+
+
+.button {
+    margin-top: .5rem;
+}
+
+table {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.fullTitulo {
+    margin: 0;
+}
+  
+.voltar-button {
+   z-index: 1000;
+}

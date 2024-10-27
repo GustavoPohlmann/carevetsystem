@@ -18,15 +18,23 @@
 }
 
 .cinquentaWidth{
-    width: 47%;
+    width: 49%;
 }
 
 .paddingRight{
-    padding-right: 1.5rem;
+    padding-right: 1%;
 }
 
 .paddingLeft{
-    padding-left: 1rem;
+    padding-left: 1%;
+}
+
+.marginRight{
+    margin-right: 1%;
+}
+
+.marginLeft{
+    margin-left: 1%;
 }
 
 .paddingH1Vacina{

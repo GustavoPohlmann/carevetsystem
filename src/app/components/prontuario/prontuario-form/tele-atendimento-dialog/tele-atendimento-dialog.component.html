@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Acesse o atendimento no link abaixo</h1>
+<div mat-dialog-content>
+  <mat-form-field class="form-field fullWidth" appearance="fill">
+    <mat-label>Acesso ao Atendimento On-line</mat-label>
+    <input 
+      required
+      matInput 
+      maxlength="100"
+      type="text" 
+      name="url"
+      [disabled]="true"
+      [(ngModel)]="teleAtendimento.url">
+    <button mat-icon-button matSuffix (click)="copiar(teleAtendimento.url)">
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions class="button-container" style="display: flex; justify-content: center;">
+ <!--  <button mat-button (click)="salvar()" mat-stroked-button color="primary" class="mat-elevation-z4 button">Salvar</button> -->
+  <button mat-button (click)="cancelar()" color="warn" class="mat-elevation-z4 button">Cancelar</button>
+</div>

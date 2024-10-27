@@ -52,6 +52,7 @@ import { ProntuarioFormComponent } from './components/prontuario/prontuario-form
 import { ProntuarioAgendarDialogComponent } from './components/prontuario/prontuario-list/prontuario-agendar-dialog/prontuario-agendar-dialog.component';
 import { HistoricoListComponent } from './components/historico/historico-list/historico-list.component';
 import { HistoricoFormComponent } from './components/historico/historico-form/historico-form.component';
+import { TeleAtendimentoDialogComponent } from './components/prontuario/prontuario-form/tele-atendimento-dialog/tele-atendimento-dialog.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { HistoricoFormComponent } from './components/historico/historico-form/hi
     ProntuarioAgendarDialogComponent,
     HistoricoListComponent,
     HistoricoFormComponent,
+    TeleAtendimentoDialogComponent,
   ],
   imports: [
     BrowserModule,

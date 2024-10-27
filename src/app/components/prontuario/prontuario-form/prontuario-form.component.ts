@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Prontuario } from 'src/app/models/prontuario';
 import { ProntuarioService } from 'src/app/services/prontuario.service';
+import { TeleAtendimentoDialogComponent } from './tele-atendimento-dialog/tele-atendimento-dialog.component';
 
 @Component({
   selector: 'app-prontuario-form',
@@ -28,7 +30,8 @@ export class ProntuarioFormComponent implements OnInit {
     private prontuarioService : ProntuarioService,
     private toast: ToastrService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -60,5 +63,14 @@ export class ProntuarioFormComponent implements OnInit {
         this.toast.error(ex.error.message);
       }
     })
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TeleAtendimentoDialogComponent, {
+      width: '500px',
+      data: { idProntuario: this.prontuario.idProntuario}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }

@@ -18,6 +18,7 @@ import { ProntuarioFormComponent } from './components/prontuario/prontuario-form
 import { HistoricoListComponent } from './components/historico/historico-list/historico-list.component';
 import { HistoricoFormComponent } from './components/historico/historico-form/historico-form.component';
 import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form.component';
+import { OutrosFormComponent } from './components/outros/outros-form/outros-form.component';
 
 const routes: Routes = [
   { path: 'login', component:LoginComponent},
@@ -47,6 +48,8 @@ const routes: Routes = [
       {path: 'historico/visualizar/:id', component: HistoricoFormComponent},
 
       {path: 'agenda', component: AgendaFormComponent},
+
+      {path: 'outros', component: OutrosFormComponent},
     ]
   },
 ];

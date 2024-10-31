@@ -55,6 +55,9 @@ import { HistoricoFormComponent } from './components/historico/historico-form/hi
 import { TeleAtendimentoDialogComponent } from './components/prontuario/prontuario-form/tele-atendimento-dialog/tele-atendimento-dialog.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form.component';
+import { OutrosFormComponent } from './components/outros/outros-form/outros-form.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { CustomPaginatorIntl } from './customArquiteture/custom-paginator-intl';
 
 
 @NgModule({
@@ -81,6 +84,7 @@ import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form
     HistoricoFormComponent,
     TeleAtendimentoDialogComponent,
     AgendaFormComponent,
+    OutrosFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,10 @@ import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form
     }),
     NgxMaskModule.forRoot(),
   ],
-  providers: [AuthInterceptorProvider],
+  providers: [
+    AuthInterceptorProvider,
+    { provide: MatPaginatorIntl, useValue: CustomPaginatorIntl() }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

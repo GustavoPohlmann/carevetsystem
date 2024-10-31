@@ -1,0 +1,31 @@
+.container{
+    width: 45rem;
+    margin: auto;
+    padding: 1rem 1rem 3rem 1rem;
+    border-radius: .6rem;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.cinquentaWidth{
+    width: 49%;
+}
+
+.marginRight{
+    margin-right: 1%;
+}
+
+.marginLeft{
+    margin-left: 1%;
+}
+
+h1{
+    text-align: center;
+}
+
+
+.button {
+    margin-top: .5rem;
+}

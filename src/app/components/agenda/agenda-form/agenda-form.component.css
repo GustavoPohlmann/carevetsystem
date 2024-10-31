@@ -1,0 +1,19 @@
+:host {
+    display: flex;         
+    justify-content: center; 
+    align-items: center;    
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .calendar-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  full-calendar {
+    height: 100%;
+    width: 100%;
+  }
+  

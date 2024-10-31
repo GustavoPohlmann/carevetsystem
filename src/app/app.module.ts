@@ -53,6 +53,8 @@ import { ProntuarioAgendarDialogComponent } from './components/prontuario/prontu
 import { HistoricoListComponent } from './components/historico/historico-list/historico-list.component';
 import { HistoricoFormComponent } from './components/historico/historico-form/historico-form.component';
 import { TeleAtendimentoDialogComponent } from './components/prontuario/prontuario-form/tele-atendimento-dialog/tele-atendimento-dialog.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form.component';
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { TeleAtendimentoDialogComponent } from './components/prontuario/prontuar
     HistoricoListComponent,
     HistoricoFormComponent,
     TeleAtendimentoDialogComponent,
+    AgendaFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,7 @@ import { TeleAtendimentoDialogComponent } from './components/prontuario/prontuar
     MatNativeDateModule,
     MatTabsModule,
     MatDialogModule,
+    FullCalendarModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

@@ -3,13 +3,13 @@
     <mat-form-field class="fullWidth" appearance="outline">
         <mat-label>Animal</mat-label>
         <mat-select 
-          [(ngModel)]="prontuario.animal"
+          [(ngModel)]="agenda.animal"
           name="animal"
           required>
             <mat-option *ngFor="let animal of animais" [value]="animal">{{ animal.nome }}</mat-option>
         </mat-select>
 
-        <button *ngIf="prontuario.animal" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.animal=null">
+        <button *ngIf="agenda.animal" matSuffix mat-icon-button aria-label="Clear" (click)="agenda.animal=null">
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
@@ -19,23 +19,34 @@
         <input 
         matInput 
         [matDatepicker]="picker"
-        name="dataCadastro" 
+        name="dataInicioAgendamento" 
         [disabled]="false"
         (change)="atualizarDataAgendamento()"
-        [(ngModel)]="prontuario.dataAgendamento">
+        [(ngModel)]="agenda.dataInicioAgendamento">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="form-field fullWidth">
-        <mat-label>Hora</mat-label>
+    <mat-form-field appearance="fill" class="form-field cinquentaWidth paddingRight">
+        <mat-label>Hora de Início</mat-label>
         <input 
             matInput 
             type="time" 
-            name="horaCadastro" 
+            name="horaInicio" 
             [disabled]="false" 
-            (change)="atualizarDataAgendamento()"
-            [(ngModel)]="dataAgendamentoHora">
+            (change)="atualizarDataInicioAgendamento()"
+            [(ngModel)]="horaInicio">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field cinquentaWidth paddingLeft">
+        <mat-label>Hora de Término</mat-label>
+        <input 
+            matInput 
+            type="time" 
+            name="horaFim" 
+            [disabled]="false" 
+            (change)="atualizarDataFimAgendamento()"
+            [(ngModel)]="horaFim">
     </mat-form-field>
 
     <mat-form-field class="form-field fullWidth" appearance="fill">
@@ -46,8 +57,8 @@
         maxlength="100"
         type="text" 
         name="procedimento"
-        [(ngModel)]="prontuario.procedimento">
-        <button *ngIf="prontuario.procedimento" matSuffix mat-icon-button aria-label="Clear" (click)="prontuario.procedimento=''">
+        [(ngModel)]="agenda.procedimento">
+        <button *ngIf="agenda.procedimento" matSuffix mat-icon-button aria-label="Clear" (click)="agenda.procedimento=''">
           <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>

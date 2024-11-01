@@ -31,11 +31,11 @@ export class ProntuarioService {
     return this.http.delete<Prontuario>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/${id}`)
   }
 
-  findAtendimentoDiario(): Observable<Prontuario[]> {
-    return this.http.get<Prontuario[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-atendimento-diario`);
-  }
-
   findByIdAnimal(idAnimal : any): Observable<Prontuario[]> {
     return this.http.get<Prontuario[]>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-by-id-animal/${idAnimal}`);
   }
+
+  findByIdAgenda(idAgenda : any): Observable<Prontuario> {
+    return this.http.get<Prontuario>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-by-id-agenda/${idAgenda}`);
   }
+}

@@ -1,3 +1,4 @@
+import { Agenda } from "./agenda";
 import { Animal } from "./animal";
 import { Usuario } from "./usuario";
 
@@ -8,8 +9,7 @@ export interface Prontuario {
 	prescrisaoOrientacao: string;
 	exames: string;
 	procedimentoRealizado: string;
-	procedimento: string;
 	usuario: Usuario;
 	animal : Animal;
-	dataAgendamento: Date;
+	agenda: Agenda;
 }

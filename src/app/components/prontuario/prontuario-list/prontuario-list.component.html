@@ -12,29 +12,34 @@
           <table mat-table [dataSource]="dataSource">
             
             <ng-container matColumnDef="paciente">
-              <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Paciente </th>
+              <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Paciente </th>
               <td mat-cell *matCellDef="let element" style="width: 20%;"> {{element.animal.nome}} </td>
             </ng-container>
           
             <ng-container matColumnDef="tutor">
-              <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Tutor </th>
+              <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Tutor </th>
               <td mat-cell *matCellDef="let element" style="width: 20%;"> {{element.animal.tutor.nome}} </td>
             </ng-container>
             
-            <ng-container matColumnDef="hora">
-                <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Hora </th>
-                <td mat-cell *matCellDef="let element" style="width: 10%;"> {{element.dataAgendamento | date:'HH:mm'}} </td>
+            <ng-container matColumnDef="dataInicioAgendamento">
+                <th mat-header-cell *matHeaderCellDef style="width: 8%;">Hora de Início</th>
+                <td mat-cell *matCellDef="let element" style="width: 8%;"> {{element.dataInicioAgendamento | date:'HH:mm'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dataFimAgendamento">
+                <th mat-header-cell *matHeaderCellDef style="width: 8%;">Hora de Término</th>
+                <td mat-cell *matCellDef="let element" style="width: 8%;"> {{element.dataFimAgendamento | date:'HH:mm'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="procedimento">
-                <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Procedimento </th>
-                <td mat-cell *matCellDef="let element" style="width: 30%;"> {{element.procedimento}} </td>
+                <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Procedimento </th>
+                <td mat-cell *matCellDef="let element" style="width: 25%;"> {{element.procedimento}} </td>
               </ng-container>
         
             <ng-container matColumnDef="acoes">
               <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Ações </th>
               <td mat-cell *matCellDef="let element" style="width: 10%;">
-              <a routerLink="prontuario/{{element.id}}">
+              <a routerLink="prontuario/{{element.idAgenda}}">
                 <i class="material-icons edit">edit</i>
               </a>
               <a (click)="excluir(element)">

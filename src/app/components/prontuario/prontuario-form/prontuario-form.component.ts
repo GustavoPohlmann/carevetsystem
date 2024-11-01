@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Prontuario } from 'src/app/models/prontuario';
 import { ProntuarioService } from 'src/app/services/prontuario.service';
 import { TeleAtendimentoDialogComponent } from './tele-atendimento-dialog/tele-atendimento-dialog.component';
+import { AgendaService } from 'src/app/services/agenda.service';
 
 @Component({
   selector: 'app-prontuario-form',
@@ -20,29 +21,37 @@ export class ProntuarioFormComponent implements OnInit {
     prescrisaoOrientacao: '',
     exames: '',
     procedimentoRealizado: '',
-    procedimento: '',
     usuario: null,
     animal: null,
-    dataAgendamento: new Date()
+    agenda: null
   };
 
   constructor(
     private prontuarioService : ProntuarioService,
     private toast: ToastrService,
+    private agendaService: AgendaService,
     private router: Router,
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.prontuario.idProntuario = this.route.snapshot.paramMap.get('id');
-    this.findById();
+    var idAgenda = this.route.snapshot.paramMap.get('id');
+    this.findById(idAgenda);
   }
 
-  findById(): void{
-    this.prontuarioService.findById(this.prontuario.idProntuario).subscribe(resposta =>{
-      this.prontuario = resposta;
-      this.prontuario.dataCadastro = new Date();
+  findById(idAgenda: any): void{debugger
+    this.prontuarioService.findByIdAgenda(idAgenda).subscribe(resposta =>{
+      if(resposta.idProntuario == null || resposta.idProntuario == undefined){
+        this.agendaService.findById(idAgenda).subscribe(resposta =>{
+          this.prontuario.agenda = resposta;
+          this.prontuario.animal = resposta.animal;
+          this.prontuario.usuario = resposta.usuario;
+        })
+      } else {
+        this.prontuario = resposta;
+        this.prontuario.dataCadastro = new Date();
+      }
     });
   }
 

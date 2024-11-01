@@ -17,10 +17,9 @@ export class HistoricoFormComponent implements OnInit {
     prescrisaoOrientacao: '',
     exames: '',
     procedimentoRealizado: '',
-    procedimento: '',
     usuario: null,
     animal: null,
-    dataAgendamento: new Date()
+    agenda: null
   };
 
   constructor(

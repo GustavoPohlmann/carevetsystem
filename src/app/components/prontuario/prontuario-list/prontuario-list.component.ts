@@ -3,9 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
-import { Prontuario } from 'src/app/models/prontuario';
-import { ProntuarioService } from 'src/app/services/prontuario.service';
 import { ProntuarioAgendarDialogComponent } from './prontuario-agendar-dialog/prontuario-agendar-dialog.component';
+import { Agenda } from 'src/app/models/agenda';
+import { AgendaService } from 'src/app/services/agenda.service';
 
 @Component({
   selector: 'app-prontuario-list',
@@ -14,12 +14,12 @@ import { ProntuarioAgendarDialogComponent } from './prontuario-agendar-dialog/pr
 })
 export class ProntuarioListComponent implements OnInit {
 
-  ELEMENT_DATA: Prontuario[] = []
+  ELEMENT_DATA: Agenda[] = []
 
-  displayedColumns: string[] = ['paciente', 'tutor', 'hora', 'procedimento',  'acoes'];
-  dataSource = new MatTableDataSource<Prontuario>(this.ELEMENT_DATA);
+  displayedColumns: string[] = ['paciente', 'tutor', 'dataInicioAgendamento', 'dataFimAgendamento', 'procedimento',  'acoes'];
+  dataSource = new MatTableDataSource<Agenda>(this.ELEMENT_DATA);
 
-  constructor(private service : ProntuarioService, private toast: ToastrService, public dialog: MatDialog) { }
+  constructor(private service : AgendaService, private toast: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -35,16 +35,17 @@ export class ProntuarioListComponent implements OnInit {
   findAll(){
     this.service.findAtendimentoDiario().subscribe(resposta => {
       this.ELEMENT_DATA = resposta;
-      this.dataSource = new MatTableDataSource<Prontuario>(resposta);
+      this.dataSource = new MatTableDataSource<Agenda>(resposta);
       this.dataSource.paginator = this.paginator;
     })
   }
-  excluir(prontuario : Prontuario){
-    this.service.delete(prontuario.idProntuario).subscribe(respota =>{
-      this.toast.success('Prontuario excluído com sucesso', 'Exclusão')
+
+  excluir(agenda : Agenda){
+    this.service.delete(agenda.idAgenda).subscribe(respota =>{
+      this.toast.success('Agendamento excluído com sucesso', 'Exclusão')
       this.findAll();
     }, ex =>{
-      if(ex.error.errors) {
+      if(ex.error) {
         ex.error.errors.forEach(element => {
           this.toast.error(element.message);
         });

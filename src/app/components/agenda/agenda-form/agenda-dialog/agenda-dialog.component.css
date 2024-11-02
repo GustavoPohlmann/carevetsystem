@@ -1,0 +1,19 @@
+h1{
+    text-align: center;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.cinquentaWidth{
+    width: 49%;
+}
+
+.paddingRight{
+    margin-right: 1%;
+}
+
+.paddingLeft{
+    margin-left: 1%;
+}

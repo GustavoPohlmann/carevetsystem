@@ -36,7 +36,7 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { TutorCreateComponent } from './components/tutor/tutor-create/tutor-create.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NgxMaskModule } from 'ngx-mask';
-import { MatNativeDateModule } from '@angular/material/core';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { TutorUpdateComponent } from './components/tutor/tutor-update/tutor-update.component';
 import { AnimalListComponent } from './components/animal/animal-list/animal-list.component';
 import { AnimalFormComponent } from './components/animal/animal-form/animal-form.component';
@@ -58,7 +58,20 @@ import { AgendaFormComponent } from './components/agenda/agenda-form/agenda-form
 import { OutrosFormComponent } from './components/outros/outros-form/outros-form.component';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginatorIntl } from './customArquiteture/custom-paginator-intl';
+import { AgendaDialogComponent } from './components/agenda/agenda-form/agenda-dialog/agenda-dialog.component';
+import { CustomDateAdapter } from './customArquiteture/custom-date-adapter';
 
+export const MY_DATE_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -85,6 +98,7 @@ import { CustomPaginatorIntl } from './customArquiteture/custom-paginator-intl';
     TeleAtendimentoDialogComponent,
     AgendaFormComponent,
     OutrosFormComponent,
+    AgendaDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -121,7 +135,10 @@ import { CustomPaginatorIntl } from './customArquiteture/custom-paginator-intl';
   ],
   providers: [
     AuthInterceptorProvider,
-    { provide: MatPaginatorIntl, useValue: CustomPaginatorIntl() }
+    { provide: MatPaginatorIntl, useValue: CustomPaginatorIntl() },
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent]
 })

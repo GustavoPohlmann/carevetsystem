@@ -1,0 +1,72 @@
+<h1 mat-dialog-title>Agendar Atendimento </h1>
+<div mat-dialog-content>
+    <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Animal</mat-label>
+        <mat-select 
+          [(ngModel)]="agenda.animal"
+          name="animal"
+          [compareWith]="compararAnimais"
+          required>
+            <mat-option *ngFor="let animal of animais" [value]="animal">{{ animal.nome }}</mat-option>
+        </mat-select>
+
+        <button *ngIf="agenda.animal" matSuffix mat-icon-button aria-label="Clear" (click)="agenda.animal=null">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field fullWidth">
+        <mat-label>Data</mat-label>
+        <input 
+        matInput 
+        [matDatepicker]="picker"
+        name="dataInicioAgendamento" 
+        [disabled]="false"
+        (change)="atualizarDataAgendamento()"
+        [(ngModel)]="agenda.dataInicioAgendamento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field cinquentaWidth paddingRight">
+        <mat-label>Hora de Início</mat-label>
+        <input 
+            matInput 
+            type="time" 
+            name="horaInicio" 
+            [disabled]="false" 
+            (change)="atualizarDataInicioAgendamento()"
+            [(ngModel)]="horaInicio">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field cinquentaWidth paddingLeft">
+        <mat-label>Hora de Término</mat-label>
+        <input 
+            matInput 
+            type="time" 
+            name="horaFim" 
+            [disabled]="false" 
+            (change)="atualizarDataFimAgendamento()"
+            [(ngModel)]="horaFim">
+    </mat-form-field>
+
+    <mat-form-field class="form-field fullWidth" appearance="fill">
+        <mat-label>Procedimento</mat-label>
+        <input 
+        required
+        matInput 
+        maxlength="100"
+        type="text" 
+        name="procedimento"
+        [(ngModel)]="agenda.procedimento">
+        <button *ngIf="agenda.procedimento" matSuffix mat-icon-button aria-label="Clear" (click)="agenda.procedimento=''">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions class="button-container" style="display: flex; justify-content: center;">
+  <button mat-button (click)="agendar()" mat-stroked-button color="primary" class="mat-elevation-z4 button">Agendar</button>
+  <button mat-button (click)="cancelar()" color="accent" class="mat-elevation-z4 button">Cancelar</button>
+  <button mat-button (click)="desagendar()" color="warn" class="mat-elevation-z4 button" [disabled]="disableDesagendar()">Excluir Agendamento</button>
+</div>

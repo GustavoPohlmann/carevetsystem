@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8">
     <form class="form">
-        <h1 class="fullWidth">Cadastrar Técnico</h1>
+        <h1 class="fullWidth">Cadastrar Tutor</h1>
 
         <mat-form-field class="form-field fullWidth" appearance="fill">
             <mat-label>Nome</mat-label>
@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-form-field class="form-field fullWidth" appearance="fill">
-            <mat-label>Cpf</mat-label>
+            <mat-label>CPF</mat-label>
             <input 
             [formControl]="validateCpf"
             required
@@ -33,13 +33,14 @@
         </mat-form-field>
 
         <mat-form-field class="form-field fullWidth" appearance="fill">
-            <mat-label>Rg</mat-label>
+            <mat-label>RG</mat-label>
             <input 
             [formControl]="validateRg"
             required
             matInput 
             type="text" 
             name="rg"
+            mask="0.000.000"
             [(ngModel)]="tutor.rg">
             <button *ngIf="tutor.rg" matSuffix mat-icon-button aria-label="Clear" (click)="tutor.rg=''">
               <mat-icon>close</mat-icon>

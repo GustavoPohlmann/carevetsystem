@@ -16,8 +16,8 @@
             </button>
         </mat-form-field>
 
-        <button (click)="gerarDeclaracaoObito()" mat-stroked-button color="primary" class="cinquentaWidth marginRight mat-elevation-z4 button">Declaração de óbito</button>
-        <button (click)="gerarTermoConsequentimento()" mat-stroked-button color="primary" class="cinquentaWidth marginLeft mat-elevation-z4 button">Termo de consentimento</button>
+        <button (click)="gerarDeclaracaoObito()" mat-stroked-button color="primary" class="cinquentaWidth marginRight mat-elevation-z4 button" [disabled]="disalbeButton()">Declaração de óbito</button>
+        <button (click)="gerarTermoConsequentimento()" mat-stroked-button color="primary" class="cinquentaWidth marginLeft mat-elevation-z4 button" [disabled]="disalbeButton()">Termo de consentimento</button>
     
     </form>
 </div>

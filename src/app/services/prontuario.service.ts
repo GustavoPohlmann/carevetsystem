@@ -38,4 +38,8 @@ export class ProntuarioService {
   findByIdAgenda(idAgenda : any): Observable<Prontuario> {
     return this.http.get<Prontuario>(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/find-by-id-agenda/${idAgenda}`);
   }
+
+  generatePdfProntuario(idProntuario : any): Observable<Blob> {
+    return this.http.get(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/generate-pdf-prontuario/${idProntuario}`, { responseType: 'blob' });
+  }
 }

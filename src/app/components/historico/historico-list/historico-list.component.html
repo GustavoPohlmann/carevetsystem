@@ -17,7 +17,7 @@
 
     <button (click)="consultar()" [disabled]="disale()" class="cinquentaWidth paddingRight mat-elevation-z8 button" mat-stroked-button color="primary">Consultar</button>
 
-    <button (click)="imprimirHistorico()" [disabled]="disale()" class="cinquentaWidth paddingLeft mat-elevation-z8 button" mat-stroked-button color="primary">Imprimir Histórico</button>
+    <button [disabled]="disale()" class="cinquentaWidth paddingLeft mat-elevation-z8 button" mat-stroked-button color="primary">Imprimir Histórico</button>
   
       <mat-form-field appearance="standard">
         <mat-label>Filtro (Paciente - Tutor - Hora - Procedimento)</mat-label>
@@ -53,7 +53,7 @@
               <a routerLink="visualizar/{{element.id}}">
                 <i class="material-icons edit">visibility</i>
               </a>
-              <a routerLink="prontuario/{{element.id}}">
+              <a (click)="imprimirHistorico(element.id)">
                 <i class="material-icons edit">print</i>
               </a>
               </td>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { Animal } from 'src/app/models/animal';
 import { Prontuario } from 'src/app/models/prontuario';
 import { AnimalService } from 'src/app/services/animal.service';
@@ -22,7 +23,11 @@ export class HistoricoListComponent implements OnInit {
   displayedColumns: string[] = ['paciente', 'tutor', 'dataAtendimento', 'procedimento',  'acoes'];
   dataSource = new MatTableDataSource<Prontuario>(this.ELEMENT_DATA);
 
-  constructor(private service : ProntuarioService, private animalService : AnimalService) { }
+  constructor(
+    private service : ProntuarioService, 
+    private animalService : AnimalService,
+    private toast: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.findAllAnimal();
@@ -50,12 +55,17 @@ export class HistoricoListComponent implements OnInit {
     return this.animal == null;
   }
   
-  imprimirHistorico(): void {
-    /* this.service.imprimirHistorico(this.animal.idAnimal).subscribe(resposta => {
-      let file = new Blob([resposta], { type: 'application/pdf' });
-      var fileURL = URL.createObjectURL(file);
-      window.open(fileURL);
-    }) */
+  imprimirHistorico(idProntuario: any): void {
+    this.service.generatePdfProntuario(idProntuario).subscribe((response) => {      
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      window.open(url, '_blank');
+      
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      this.toast.error('Erro ao gerar PDF:', error); 
+    });
   }
 
   consultar(){

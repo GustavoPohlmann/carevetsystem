@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Animal } from 'src/app/models/animal';
 import { AnimalService } from 'src/app/services/animal.service';
+import { OutrosService } from 'src/app/services/outros.service';
 
 @Component({
   selector: 'app-outros-form',
@@ -13,7 +15,11 @@ export class OutrosFormComponent implements OnInit {
 
   animais: Animal[] = [];
 
-  constructor(private animalService : AnimalService) { }
+  constructor(
+    private animalService : AnimalService,
+    private outrosService : OutrosService,
+    private toast: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.findAllAnimal();
@@ -28,13 +34,35 @@ export class OutrosFormComponent implements OnInit {
   onChangeAnimal(): void {
     this.animal = null;
   }
+  
+  disalbeButton(): boolean {
+    return this.animal == null;
+  }
 
   gerarDeclaracaoObito(): void {
-    console.log('Gerar Declaração de Óbito');
+    this.outrosService.generatePdfObito(this.animal.idAnimal).subscribe((response) => {      
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      window.open(url, '_blank');
+      
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      this.toast.error('Erro ao gerar PDF:', error); 
+    });
   }
 
   gerarTermoConsequentimento(): void {
-    console.log('Gerar Termo de Consequentimento');
+    this.outrosService.generatePdfTermoConsentimento(this.animal.idAnimal).subscribe((response) => {      
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      window.open(url, '_blank');
+      
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      this.toast.error('Erro ao gerar PDF:', error);
+    });
   }
 
 }

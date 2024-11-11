@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 // Para realizar requisições HTTP
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 // Imports para componentes do Angular Material
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -60,6 +60,9 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { CustomPaginatorIntl } from './customArquiteture/custom-paginator-intl';
 import { AgendaDialogComponent } from './components/agenda/agenda-form/agenda-dialog/agenda-dialog.component';
 import { CustomDateAdapter } from './customArquiteture/custom-date-adapter';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 export const MY_DATE_FORMATS = {
   parse: {
@@ -99,6 +102,8 @@ export const MY_DATE_FORMATS = {
     AgendaFormComponent,
     OutrosFormComponent,
     AgendaDialogComponent,
+    LoadingSpinnerComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -139,6 +144,7 @@ export const MY_DATE_FORMATS = {
     { provide: DateAdapter, useClass: CustomDateAdapter },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

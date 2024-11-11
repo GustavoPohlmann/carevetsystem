@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Tutor } from 'src/app/models/tutor';
 import { TutorService } from 'src/app/services/tutor.service';
 
@@ -16,7 +18,7 @@ export class TutorListComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'nome', 'cpf', 'rg', 'dataNascimento', 'email', 'acoes'];
   dataSource = new MatTableDataSource<Tutor>(this.ELEMENT_DATA);
 
-  constructor(private service: TutorService, private toast: ToastrService) { }
+  constructor(private service: TutorService, private toast: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -41,18 +43,24 @@ export class TutorListComponent implements OnInit {
   }
 
   excluir(tutor : Tutor){
-    this.service.delete(tutor.idTutor).subscribe(respota =>{
-      this.toast.success('Tutor excluído com sucesso', 'Exclusão')
-      this.findAll();
-    }, ex =>{
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete(tutor.idTutor).subscribe(respota =>{
+          this.toast.success('Tutor excluído com sucesso', 'Exclusão')
+          this.findAll();
+        }, ex =>{
+          if(ex.error.errors) {
+            ex.error.errors.forEach(element => {
+              this.toast.error(element.message);
+            });
+          } else {
+            this.toast.error(ex.error.message);
+          }
+        })
       }
-    })
+    });
   }
 
 }

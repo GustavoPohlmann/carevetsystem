@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ProntuarioAgendarDialogComponent } from './prontuario-agendar-dialog/prontuario-agendar-dialog.component';
 import { Agenda } from 'src/app/models/agenda';
 import { AgendaService } from 'src/app/services/agenda.service';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-prontuario-list',
@@ -41,18 +42,24 @@ export class ProntuarioListComponent implements OnInit {
   }
 
   excluir(agenda : Agenda){
-    this.service.delete(agenda.idAgenda).subscribe(respota =>{
-      this.toast.success('Agendamento excluído com sucesso', 'Exclusão')
-      this.findAll();
-    }, ex =>{
-      if(ex.error) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete(agenda.idAgenda).subscribe(respota =>{
+          this.toast.success('Agendamento excluído com sucesso', 'Exclusão')
+          this.findAll();
+        }, ex =>{
+          if(ex.error) {
+            ex.error.errors.forEach(element => {
+              this.toast.error(element.message);
+            });
+          } else {
+            this.toast.error(ex.error.message);
+          }
+        })
       }
-    })
+    });
   }
 
   openDialog(): void {

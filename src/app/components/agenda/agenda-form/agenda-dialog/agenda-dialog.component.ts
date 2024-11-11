@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ProntuarioAgendarDialogComponent } from 'src/app/components/prontuario/prontuario-list/prontuario-agendar-dialog/prontuario-agendar-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { Agenda } from 'src/app/models/agenda';
 import { Animal } from 'src/app/models/animal';
 import { AgendaService } from 'src/app/services/agenda.service';
@@ -37,6 +38,7 @@ export class AgendaDialogComponent implements OnInit {
     private usuarioService : UsuarioService,
     private toast: ToastrService,
     public dialogRef: MatDialogRef<AgendaDialogComponent>,
+    public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
@@ -132,12 +134,18 @@ export class AgendaDialogComponent implements OnInit {
   }
 
   desagendar(): void {
-    this.agendaService.delete(this.agenda.idAgenda).subscribe(resposta => {
-      this.toast.success('Desagendado com sucesso', 'Agenda');
-      this.dialogRef.close();
-    }, ex => {
-      this.toast.error('Erro ao desagendar', 'Agenda');
-    })
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.agendaService.delete(this.agenda.idAgenda).subscribe(resposta => {
+          this.toast.success('Desagendado com sucesso', 'Agenda');
+          this.dialogRef.close();
+        }, ex => {
+          this.toast.error('Erro ao desagendar', 'Agenda');
+        })
+      }
+    });
   }
 
   cancelar(): void {

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { CadernetaVacina } from 'src/app/models/cadernetaVacina';
 import { CadernetaVacinaService } from 'src/app/services/caderneta-vacina.service';
 
@@ -17,7 +19,7 @@ export class CadernetaVacinaListComponent implements OnInit {
   displayedColumns: string[] = ['codigo', 'animal', 'tutor', 'acoes'];
   dataSource = new MatTableDataSource<CadernetaVacina>(this.ELEMENT_DATA);
 
-  constructor(private service : CadernetaVacinaService, private toast: ToastrService) { }
+  constructor(private service : CadernetaVacinaService, private toast: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -45,17 +47,23 @@ export class CadernetaVacinaListComponent implements OnInit {
     })
   }
   excluir(cadernetaVacina : CadernetaVacina){
-    this.service.delete(cadernetaVacina.idCadernetaVacina).subscribe(respota =>{
-      this.toast.success('Cadernata de vacina excluída com sucesso', 'Exclusão')
-      this.findAll();
-    }, ex =>{
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.service.delete(cadernetaVacina.idCadernetaVacina).subscribe(respota =>{
+          this.toast.success('Cadernata de vacina excluída com sucesso', 'Exclusão')
+          this.findAll();
+        }, ex =>{
+          if(ex.error.errors) {
+            ex.error.errors.forEach(element => {
+              this.toast.error(element.message);
+            });
+          } else {
+            this.toast.error(ex.error.message);
+          }
+        })
       }
-    })
+    });
   }
 }

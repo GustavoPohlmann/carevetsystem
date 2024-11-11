@@ -11,6 +11,7 @@ import { AnimalService } from 'src/app/services/animal.service';
 import { CadernetaVacinaService } from 'src/app/services/caderneta-vacina.service';
 import { VacinaService } from 'src/app/services/vacina.service';
 import { VacinaDialogComponent } from './vacina-dialog/vacina-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-caderneta-vacina-form',
@@ -75,18 +76,24 @@ export class CadernetaVacinaFormComponent implements OnInit {
   }
 
   excluir(vacina : Vacina){
-    this.vacinaService.delete(vacina.idVacina).subscribe(respota =>{
-      this.toast.success('Vacina excluída com sucesso', 'Exclusão')
-      this.findAllVacina();
-    }, ex =>{
-      if(ex.error.errors) {
-        ex.error.errors.forEach(element => {
-          this.toast.error(element.message);
-        });
-      } else {
-        this.toast.error(ex.error.message);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.vacinaService.delete(vacina.idVacina).subscribe(respota =>{
+          this.toast.success('Vacina excluída com sucesso', 'Exclusão')
+          this.findAllVacina();
+        }, ex =>{
+          if(ex.error.errors) {
+            ex.error.errors.forEach(element => {
+              this.toast.error(element.message);
+            });
+          } else {
+            this.toast.error(ex.error.message);
+          }
+        })
       }
-    })
+    });
   }
 
   findAllAnimal(): void {

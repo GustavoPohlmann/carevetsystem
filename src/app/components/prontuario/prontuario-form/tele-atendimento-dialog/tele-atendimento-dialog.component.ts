@@ -35,7 +35,7 @@ export class TeleAtendimentoDialogComponent implements OnInit {
     });
   }
 
-  findByIdProntuario(): void{debugger
+  findByIdProntuario(): void{
     this.teleAtendimentoService.findByIdProntuario(this.data.idProntuario).subscribe(resposta =>{
       this.teleAtendimento = resposta;
       if(this.teleAtendimento === null ||  this.teleAtendimento.idTeleAtendimento === null || this.teleAtendimento.idTeleAtendimento === ''){

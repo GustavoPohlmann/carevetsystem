@@ -40,7 +40,7 @@ export class ProntuarioFormComponent implements OnInit {
     this.findById(idAgenda);
   }
 
-  findById(idAgenda: any): void{debugger
+  findById(idAgenda: any): void{
     this.prontuarioService.findByIdAgenda(idAgenda).subscribe(resposta =>{
       if(resposta.idProntuario == null || resposta.idProntuario == undefined){
         this.agendaService.findById(idAgenda).subscribe(resposta =>{

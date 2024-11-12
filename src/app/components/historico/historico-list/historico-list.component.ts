@@ -68,6 +68,21 @@ export class HistoricoListComponent implements OnInit {
     });
   }
 
+  imprimir(): void {
+    this.service.generatePdfProntuarioByIdAnimal(this.animal.idAnimal).subscribe((response) => {
+      console.log(response);
+           
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      
+      window.open(url, '_blank');
+      
+      window.URL.revokeObjectURL(url);
+    }, error => {
+      this.toast.error('Erro ao gerar PDF:', error); 
+    });
+  }
+
   consultar(){
     this.service.findByIdAnimal(this.animal.idAnimal).subscribe(resposta => {
       this.ELEMENT_DATA = resposta;

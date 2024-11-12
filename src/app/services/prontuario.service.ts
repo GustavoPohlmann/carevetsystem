@@ -42,4 +42,8 @@ export class ProntuarioService {
   generatePdfProntuario(idProntuario : any): Observable<Blob> {
     return this.http.get(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/generate-pdf-prontuario/${idProntuario}`, { responseType: 'blob' });
   }
+
+  generatePdfProntuarioByIdAnimal(idAnimal : any): Observable<Blob> {
+    return this.http.get(`${API_CONFIG.baseUrl}${API_CONFIG.versao}/prontuario/generate-pdf-by-id-animal/${idAnimal}`, { responseType: 'blob' });
+  }
 }
